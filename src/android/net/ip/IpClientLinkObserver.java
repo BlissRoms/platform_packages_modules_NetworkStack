@@ -189,8 +189,7 @@ public class IpClientLinkObserver implements NetworkObserver {
         mDnsServerRepository = new DnsServerRepository(config.minRdnssLifetime);
         mAlarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         mDependencies = deps;
-        mNetlinkEventParsingEnabled = deps.isFeatureNotChickenedOut(context,
-                IPCLIENT_PARSE_NETLINK_EVENTS_FORCE_DISABLE);
+        mNetlinkEventParsingEnabled = false;
         mNetlinkMonitor = new MyNetlinkMonitor(h, log, mTag);
         mHandler.post(() -> {
             if (!mNetlinkMonitor.start()) {
